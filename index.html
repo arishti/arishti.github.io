@@ -20,6 +20,7 @@
         if ( !$iframe ) {
           iframe = document.createElement("iframe");
           iframe.id = "iframe-render";
+          iframe.class = "embed-responsive-item"
 
           document.getElementById("iframe-body").appendChild( iframe );
         } else {
@@ -45,7 +46,7 @@
   </head>
 <body>
   <div class="container">
-    <h2>Basic Panel</h2>
+    <h2>HTML Parser</h2>
     <div class="panel panel-default">
       <div class="panel-body">
           <textarea class="form-control" rows="5" id="core_input">
@@ -54,7 +55,9 @@
           <button type="button" class="btn btn-primary" id="process">process</button>
       </div>
       <div class="panel-body">
+        <div class="embed-responsive embed-responsive-21by9">
         <div id="iframe-body"></div>
+        </div>
       </div>
     </div>
 </body>
