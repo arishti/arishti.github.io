@@ -1,54 +1,61 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
-<style>  
-  textarea {display:block;width:100%;height:100px;} 
-  iframe {width:100%;height:300px;}   
-</style>  
-<script>  
-document.addEventListener("DOMContentLoaded", function() { 
- 
- document.getElementById("process").addEventListener("click", function () { 
-  
-  var $iframe = document.getElementById("iframe-render"),  
-      iframe, iframeDoc; 
-     
-  if ( !$iframe ) { 
-    iframe = document.createElement("iframe"); 
-    iframe.id = "iframe-render"; 
-       
-    document.getElementById("iframe-body").appendChild( iframe ); 
-  } else { 
-    iframe = $iframe; 
-  }     
-     
-     
-  iframeDoc = iframe.contentWindow ?  
-                iframe.contentWindow :  
-                iframe.contentDocument.document ?  
-                  iframe.contentDocument.document :  
-                  iframe.contentDocument; 
-   
-  iframeDoc.document.open(); 
-  iframeDoc.document.write( 
-      document.getElementById("core_input").value 
-  ); 
-  iframeDoc.document.close(); 
-     
- }, false);     
-}, false); 
-</script>  
- 
-</head>  
-<body>  
-  
-  <textarea id="core_input">  
-    <script type="text/javascript"> var foo = "test"; </script>  
-  </textarea>  
-   
-  <button id="process">process</button>  
- 
-  <div id="iframe-body"></div>  
- 
-</body>  
-</html>  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HTML Parser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      textarea {display:block;width:100%;height:100px;}
+      iframe {width:100%;height:300px;}
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+
+       document.getElementById("process").addEventListener("click", function () {
+
+        var $iframe = document.getElementById("iframe-render"),
+            iframe, iframeDoc;
+
+        if ( !$iframe ) {
+          iframe = document.createElement("iframe");
+          iframe.id = "iframe-render";
+
+          document.getElementById("iframe-body").appendChild( iframe );
+        } else {
+          iframe = $iframe;
+        }
+
+
+        iframeDoc = iframe.contentWindow ?
+                      iframe.contentWindow :
+                      iframe.contentDocument.document ?
+                        iframe.contentDocument.document :
+                        iframe.contentDocument;
+
+        iframeDoc.document.open();
+        iframeDoc.document.write(
+            document.getElementById("core_input").value
+        );
+        iframeDoc.document.close();
+
+       }, false);
+      }, false);
+    </script>
+  </head>
+<body>
+  <div class="container">
+    <h2>Basic Panel</h2>
+    <div class="panel panel-default">
+      <div class="panel-body">
+          <textarea class="form-control" rows="5" id="core_input">
+            <script type="text/javascript"> var foo = "test"; </script>
+          </textarea>
+          <button type="button" class="btn btn-primary" id="process">process</button>
+      </div>
+      <div class="panel-body">
+        <div id="iframe-body"></div>
+      </div>
+    </div>
+</body>
+</html>
